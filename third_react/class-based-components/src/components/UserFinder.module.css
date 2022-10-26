@@ -1,0 +1,31 @@
+input {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 5px;
+    height: 30px;
+    width: 70%;
+}
+input:hover{
+    border: 1.5px solid #84fab0;
+}
+input:focus{
+    outline: none;
+    border:2px solid #8fd3f4;
+    color: rgb(141, 140, 140);
+    font-weight: bolder;
+}
+
+.finder {
+    margin: 2rem auto;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 40rem;
+    text-align: center;
+}
+.searchIcon{
+    vertical-align: middle;
+    width: 25px;
+    height: 30px;
+    color: rgb(141, 140, 140);
+    font-weight: bold;
+}
