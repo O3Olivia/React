@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect, Component } from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
+import ErrorBoundary from "./ErrorBoundary";
 
 import Users from "./Users";
 import classes from "./UserFinder.module.css";
@@ -46,7 +47,9 @@ class UserFinder extends Component {
             placeholder="Search"
           />
         </div>
-        <Users users={this.state.filteredUsers} />
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
