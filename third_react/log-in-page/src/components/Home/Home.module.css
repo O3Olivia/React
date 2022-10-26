@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+.home {
+    width: 90%;
+    max-width: 40rem;
+    padding: 3rem;
+    margin: 2rem auto;
+    margin-top: 250px;
+    color:#fff9fa;
+    background-color: #fbe4e8cd;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Paytone One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    text-shadow: 0 13.36px 8.896px #ffcdd2cd,0 -2px 1px #fff;
+}

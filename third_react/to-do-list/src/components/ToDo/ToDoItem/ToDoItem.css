@@ -1,0 +1,18 @@
+.todo-item {
+  margin-top: 10px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color:#494949;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow:  inset 2px 2px 5px  #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.todo-item:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #BABECC;
+}

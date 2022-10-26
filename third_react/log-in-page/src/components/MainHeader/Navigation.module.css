@@ -1,0 +1,46 @@
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Jalnan';
+}
+
+.nav li {
+    margin: 0;
+    margin-left: 2rem;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav a:hover,
+.nav a:active {
+    color: rgba(255, 255, 255, 0.654);
+}
+
+.nav button {
+    font: inherit;
+    background: #ffcdd2;
+    border: 1px solid #ffcdd2;
+    padding: 0.5rem 1.5rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
+    border-radius: 20px;
+}
+
+.nav button:focus {
+    outline: none;
+}
+
+.nav button:hover,
+.nav button:active {
+    color: rgba(255, 255, 255, 0.654);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

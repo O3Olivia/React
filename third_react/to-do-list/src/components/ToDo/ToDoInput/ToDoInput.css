@@ -1,0 +1,97 @@
+
+body, html {
+  background-color:#EBECF0;
+}
+
+body, p, input, select, textarea, button {
+    letter-spacing: -0.2px;
+    font-size: 16px;
+}
+
+div, p {
+  color: $color-shadow;
+  text-shadow: 1px 1px 1px $color-white;
+}
+
+
+button, input{
+  border: 0;
+  outline: 0;
+  font-size:16px;
+  border-radius: 20px;
+  padding: 16px;
+  background-color:#EBECF0;
+  text-shadow: 1px 1px 0 #FFF;
+}
+
+label {
+  display: block;
+  margin-bottom: $ruler*1.5;
+  width: 100%;
+}
+
+input {
+  box-shadow:  inset 2px 2px 5px  #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  
+  &:focus {
+    box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px  #FFF;
+  }
+}
+
+button{
+  color:#61677C;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 45px;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #FFF,  5px 5px 20px #BABECC;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  color:	#ff4081;
+  
+  &:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+  }
+}
+button:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    color: #ff78b0;
+  }
+
+
+h2{
+  text-align: center;
+  color: #757575;
+  text-shadow: 1px 1px 1px #FFF;
+}
+
+
+
+.form-control {
+  margin: 0.5rem 0;
+}
+
+.form-control label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+
+.form-control input {
+  box-shadow:  inset 2px 2px 5px #BABECC -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-control input:focus {
+  box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;;
+}

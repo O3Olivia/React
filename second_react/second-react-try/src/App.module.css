@@ -1,0 +1,38 @@
+.title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:60px;
+}
+
+.App {
+    text-align: center;
+    background-color: black;
+    color:white;
+    height:100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.13em;
+}
+
+.date{
+   font-size: 13px;
+    padding-top:20px;
+}
+.ul {
+    list-style: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.listQty{
+    color:pink;
+}
+.inputForm{
+    border: none;
+    width:50%;
+    padding: 10px 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.inputForm:focus{
+    outline:2px solid pink;
+    color:pink;
+    font-size:15px;
+}

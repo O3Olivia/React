@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, onClick, fontSize = 25 }) {
+      console.log(text, "was rendered");
+      return (
+        <button
+          onClick={onClick}
+          style={{
+            backgroundColor: "pink",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    // fontSize=25 => default value => Js 문법
+
+    // MemorizedBtn.propTypes = {
+    //   text: PropTypes.string,
+    //   fontSize: PropTypes.number.isRequired, => isRequired가 있으면 무조건 있어야함 없으면 에러
+    // };
+
+    const MemorizedBtn = React.memo(Btn);
+    // React.memo() => component가 React.memo로 wrapping 되면, React는 Component를 rendering하고, 그 결과를 memorizing한다. 그리고나서 다음 rendering이 일어날 때 props가 같다면, React는 memorizing 된 부분을 재 사용한다. => 부모 component state를 변경하면 자식 component도 re-rendering된다. 그렇다면 불필요한 rendering이 발생할 수 있기 때문에, React.memo()를 통해서 prop 부분이 변경된 부분만 rendering시킬 수 있다.
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <MemorizedBtn text={value} onClick={changeValue} fontSize={18} />
+          <MemorizedBtn text="Continue" />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
