@@ -11,7 +11,7 @@ function App() {
     setListTitle("New Title");
   }, []);
 
-  const listItems = useMemo(() => [5, 3, 1, 10, 9], []); // 빈 array로 해논 이유-> array에는 변화도 없을 것이고 hard coding으로 되어있어서 빈배열로 해도 된다.
+  const listItems = useMemo(() => [5, 3, 1, 10, 9], []); // 빈 array로 해논 이유-> array에는 변화도 없을 것이고 hard coding으로 되어있어서 빈배열로 함.
 
   return (
     <div className="app">
