@@ -12,7 +12,7 @@ function App() {
     setIsLoading(true); // Loading중임
     setError(null); // 이전에 받은 error 초기화시킴
     try {
-      const response = await fetch("https://swapi.dev/api/films"); // films에서 s 빼서 일부러 오류를 만들어봄
+      const response = await fetch("https://swapi.dev/api/film"); // films에서 s 빼서 일부러 오류를 만들어봄
       if (!response.ok) {
         throw new Error("Something went wrong!");
       } // resoponse가 맞는지 확인
