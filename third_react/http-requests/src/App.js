@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
+import AddMovie from "./components/AddMovie";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -12,7 +13,9 @@ function App() {
     setIsLoading(true); // Loading중임
     setError(null); // 이전에 받은 error 초기화시킴
     try {
-      const response = await fetch("https://swapi.dev/api/films"); // films에서 s 빼서 일부러 오류를 만들어봄
+      const response = await fetch(
+        "https://react-http-2a48b-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json"
+      ); // https://swapi.dev/api/films films에서 s 빼서 일부러 오류를 만들어봄
       if (!response.ok) {
         throw new Error("Something went wrong!");
       } // response가 맞는지 확인
@@ -43,6 +46,10 @@ function App() {
     fetchMovieHandler();
   }, [fetchMovieHandler]); // 컴포넌트가 재평가될때마다 호출된다. 그러나 무한루프 상태가 발생할 수 있으므로 의존성 배열을 호출한다. (언제 effect함수가 다시 실행되는지 정의)[] 빈칸으로 두게되면 로딩될 때를 제외하면 절때 재실행되지 않는다. [fetchMovieHandler]로하면 fetchMovieHandler 함수가 변경될때마다 재실행, but 무한루프 발생, so useCallback 사용
 
+  function addMovieHandler(movie) {
+    console.log(movie);
+  }
+
   let content = <p>Found no Movies.</p>;
   if (movies.length > 0) {
     content = <MoviesList movies={movies} />;
@@ -58,6 +65,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
       <section>
         <button onClick={fetchMovieHandler}>Fetch Movies</button>
         {/* Fetch Movies button을 누르면 영화정보를 가져옴 */}
