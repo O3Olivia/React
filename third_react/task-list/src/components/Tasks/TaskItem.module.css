@@ -1,8 +1,9 @@
 .task {
   border-bottom: 1px solid #ccc;
   padding: 1rem;
-  font-weight: bold;
-  font-size: 1.25rem;
+  font-weight: 500;
+  color:#3a3a3a;
+  font-size: 1rem;
 }
 
 .task:last-of-type {
