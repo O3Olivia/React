@@ -9,6 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // [GET]
   const fetchMovieHandler = useCallback(async () => {
     setIsLoading(true); // Loading중임
     setError(null); // 이전에 받은 error 초기화시킴
@@ -57,6 +58,7 @@ function App() {
     fetchMovieHandler();
   }, [fetchMovieHandler]); // 컴포넌트가 재평가될때마다 호출된다. 그러나 무한루프 상태가 발생할 수 있으므로 의존성 배열을 호출한다. (언제 effect함수가 다시 실행되는지 정의)[] 빈칸으로 두게되면 로딩될 때를 제외하면 절때 재실행되지 않는다. [fetchMovieHandler]로하면 fetchMovieHandler 함수가 변경될때마다 재실행, but 무한루프 발생, so useCallback 사용
 
+  // [POST]
   async function addMovieHandler(movie) {
     const response = await fetch(
       "https://react-http-2a48b-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
