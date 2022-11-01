@@ -16,6 +16,15 @@ const SimpleInput = (props) => {
     setEnteredName(e.target.value);
   };
 
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched(true); // input값에서 focus 잃었다는 의미는 '이미 input 공간을 touched 했다는 의미'
+
+    if (enteredName.trim() === "") {
+      setEnteredNameIsValid(false);
+      return; // 아래 실행되지 않도록 함
+    }
+  };
+
   const formSubHandler = (e) => {
     e.preventDefault();
 
@@ -49,6 +58,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler} // input이 focus를 안될때마다 실행함
           value={enteredName}
         />
         {nameInputIsInvalid && (
