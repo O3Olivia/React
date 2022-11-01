@@ -6,6 +6,10 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (e) => {
     setEnteredName(e.target.value);
+
+    if (enteredName.trim() === "") {
+      return; // 아래 실행되지 않도록
+    }
   };
 
   const formSubHandler = (e) => {
