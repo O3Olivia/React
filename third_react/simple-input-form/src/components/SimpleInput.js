@@ -7,6 +7,14 @@ const SimpleInput = (props) => {
   const enteredNameIsValid = enteredName.trim() !== "";
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  } else {
+    formIsValid = false;
+  }
+
   const nameInputChangeHandler = (e) => {
     setEnteredName(e.target.value);
   };
@@ -24,7 +32,7 @@ const SimpleInput = (props) => {
     }
 
     setEnteredName("");
-    setEnteredNameTouched(false);
+    setEnteredNameTouched(false); // form이 sub되면 input창 선택 안한 상태로 돌아감 (초기화)
   };
 
   const nameInputClasses = nameInputIsInvalid
@@ -47,7 +55,7 @@ const SimpleInput = (props) => {
         )}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
