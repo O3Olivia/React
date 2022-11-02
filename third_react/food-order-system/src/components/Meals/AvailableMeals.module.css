@@ -4,6 +4,13 @@
     margin: 2rem auto;
     animation: meals-appear 1s ease-out forwards;
 }
+.MealsLoading{
+    text-align: center;
+    color: #FF7E36;
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 60px;
+}
 
 .meals ul {
     list-style: none;
