@@ -8,7 +8,7 @@ const SimpleInput = (props) => {
     valueChangeHandler: nameChangedHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== ""); // validation
 
   const {
     value: enteredEmail,
@@ -31,8 +31,6 @@ const SimpleInput = (props) => {
     if (!enteredNameIsValid) {
       return;
     }
-
-    console.log(enteredName);
     resetNameInput();
     resetEmailInput();
   };
