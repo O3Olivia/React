@@ -1,89 +1,78 @@
-import { useState } from "react";
+import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangedHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== "");
 
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
-
-  const enteredNameIsValid = enteredName.trim() !== "";
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+  const {
+    value: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: emailInputHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput,
+  } = useInput((value) => value.includes("@"));
 
   let formIsValid = false;
 
-  const enteredEmailIsValid = enteredEmail.trim().includes("@");
-  const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
-
-  const nameInputChangeHandler = (e) => {
-    setEnteredName(e.target.value);
-  };
-
-  const emailInputChangeHandler = (e) => {
-    setEnteredEmail(e.target.value);
-  };
-
-  if ((enteredNameIsValid, enteredEmailIsValid)) {
+  if (enteredNameIsValid && enteredEmailIsValid) {
     formIsValid = true;
-  } else {
-    formIsValid = false;
   }
 
-  const nameInputBlurHandler = (e) => {
-    setEnteredNameTouched(true); // input값에서 focus 잃었다는 의미는 '이미 input 공간을 touched 했다는 의미'
-  };
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
 
-  const emailInputBlurHandler = (e) => {
-    setEnteredEmailTouched(true);
-  };
-
-  const formSubHandler = (e) => {
-    e.preventDefault();
-    setEnteredNameTouched(true); // form이 제출되는 순간 모든 입력값이 사용자가 확인했다고 생각하기 때문에 true
     if (!enteredNameIsValid) {
       return;
     }
-    setEnteredName("");
-    setEnteredNameTouched(false); // form이 sub되면 input창 선택 안한 상태로 돌아감 (초기화)
 
-    setEnteredEmail("");
-    setEnteredEmailTouched(false);
+    console.log(enteredName);
+
+    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
+    resetNameInput();
+    resetEmailInput();
   };
 
-  const nameInputClasses = nameInputIsInvalid
-    ? "form-control  invalid"
+  const nameInputClasses = nameInputHasError
+    ? "form-control invalid"
     : "form-control";
 
-  const emailInputClasses = emailInputIsInvalid
-    ? "form-control  invalid"
+  const emailInputClasses = emailInputHasError
+    ? "form-control invalid"
     : "form-control";
+
   return (
-    <form onSubmit={formSubHandler}>
+    <form onSubmit={formSubmissionHandler}>
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
           type="text"
           id="name"
-          onChange={nameInputChangeHandler}
-          onBlur={nameInputBlurHandler} // input이 focus를 안될때마다 실행함
+          onChange={nameChangedHandler}
+          onBlur={nameBlurHandler}
           value={enteredName}
         />
-        {nameInputIsInvalid && (
-          <p className="error-text">Name must not be empty</p>
+        {nameInputHasError && (
+          <p className="error-text">Name must not be empty.</p>
         )}
       </div>
-
       <div className={emailInputClasses}>
-        <label htmlFor="email">Your Email</label>
+        <label htmlFor="email">Your E-Mail</label>
         <input
           type="email"
           id="email"
-          onChange={emailInputChangeHandler}
-          onBlur={emailInputBlurHandler} // input이 focus를 안될때마다 실행함
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHandler}
           value={enteredEmail}
         />
-        {emailInputIsInvalid && (
-          <p className="error-text">Please Enter a Valid Email</p>
+        {emailInputHasError && (
+          <p className="error-text">Please enter a valid email.</p>
         )}
       </div>
       <div className="form-actions">
