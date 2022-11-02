@@ -1,5 +1,8 @@
 import useInput from "../hooks/use-input";
 
+const isNotEmpty = (value) => value.trim() !== "";
+const isEmail = (value) => value.includes("@");
+
 const BasicForm = (props) => {
   const {
     value: enteredFirstName,
@@ -8,7 +11,7 @@ const BasicForm = (props) => {
     valueChangeHandler: firstNameChangedHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: resetFirstNameInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(isNotEmpty);
 
   const {
     value: enteredLastName,
@@ -17,7 +20,7 @@ const BasicForm = (props) => {
     valueChangeHandler: lastNameChangedHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: resetLastNameInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(isNotEmpty);
 
   const {
     value: enteredEmail,
@@ -26,7 +29,7 @@ const BasicForm = (props) => {
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailNameInput,
-  } = useInput((value) => value.includes("@"));
+  } = useInput(isEmail);
 
   let formIsValid = false;
 
@@ -50,10 +53,22 @@ const BasicForm = (props) => {
     console.log("submit");
   };
 
+  const firstNameInputClasses = firstNameInputHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const lastNameInputClasses = lastNameInputHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailInputClasses = emailInputHasError
+    ? "form-control invalid"
+    : "form-control";
+
   return (
     <form onSubmit={formSubHandler}>
       <div className="control-group">
-        <div className="form-control">
+        <div className={firstNameInputClasses}>
           <label htmlFor="name">First Name</label>
           <input
             type="text"
@@ -67,7 +82,7 @@ const BasicForm = (props) => {
           )}
         </div>
 
-        <div className="form-control">
+        <div className={lastNameInputClasses}>
           <label htmlFor="name">Last Name</label>
           <input
             type="text"
@@ -82,7 +97,7 @@ const BasicForm = (props) => {
         </div>
       </div>
 
-      <div className="form-control">
+      <div className={emailInputClasses}>
         <label htmlFor="email">E-Mail Address</label>
         <input
           type="email"
