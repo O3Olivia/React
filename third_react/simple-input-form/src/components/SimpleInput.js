@@ -25,7 +25,7 @@ const SimpleInput = (props) => {
     formIsValid = true;
   }
 
-  const formSubmissionHandler = (event) => {
+  const formSubHandler = (event) => {
     event.preventDefault();
 
     if (!enteredNameIsValid) {
@@ -33,8 +33,6 @@ const SimpleInput = (props) => {
     }
 
     console.log(enteredName);
-
-    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
     resetNameInput();
     resetEmailInput();
   };
@@ -48,7 +46,7 @@ const SimpleInput = (props) => {
     : "form-control";
 
   return (
-    <form onSubmit={formSubmissionHandler}>
+    <form onSubmit={formSubHandler}>
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
