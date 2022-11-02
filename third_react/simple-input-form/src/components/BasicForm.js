@@ -1,4 +1,4 @@
-import useInput from "../hooks/use-input";
+import useSecInput from "../hooks/use-sec-input";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const isEmail = (value) => value.includes("@");
@@ -11,7 +11,7 @@ const BasicForm = (props) => {
     valueChangeHandler: firstNameChangedHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: resetFirstNameInput,
-  } = useInput(isNotEmpty);
+  } = useSecInput(isNotEmpty);
 
   const {
     value: lastNameValue,
@@ -20,7 +20,7 @@ const BasicForm = (props) => {
     valueChangeHandler: lastNameChangedHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: resetLastNameInput,
-  } = useInput(isNotEmpty);
+  } = useSecInput(isNotEmpty);
 
   const {
     value: emailValue,
@@ -29,7 +29,7 @@ const BasicForm = (props) => {
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailNameInput,
-  } = useInput(isEmail);
+  } = useSecInput(isEmail);
 
   let formIsValid = false;
 
