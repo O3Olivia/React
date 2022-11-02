@@ -5,7 +5,7 @@ const isEmail = (value) => value.includes("@");
 
 const BasicForm = (props) => {
   const {
-    value: enteredFirstName,
+    value: firstNameValue,
     isValid: enteredFirstNameIsValid,
     hasError: firstNameInputHasError,
     valueChangeHandler: firstNameChangedHandler,
@@ -14,7 +14,7 @@ const BasicForm = (props) => {
   } = useInput(isNotEmpty);
 
   const {
-    value: enteredLastName,
+    value: lastNameValue,
     isValid: enteredLastNameIsValid,
     hasError: lastNameInputHasError,
     valueChangeHandler: lastNameChangedHandler,
@@ -23,7 +23,7 @@ const BasicForm = (props) => {
   } = useInput(isNotEmpty);
 
   const {
-    value: enteredEmail,
+    value: emailValue,
     isValid: enteredEmailIsValid,
     hasError: emailInputHasError,
     valueChangeHandler: emailChangedHandler,
@@ -44,13 +44,14 @@ const BasicForm = (props) => {
   const formSubHandler = (e) => {
     e.preventDefault();
 
-    if (!enteredFirstName) {
+    if (!formIsValid) {
       return;
     }
     resetFirstNameInput();
     resetLastNameInput();
     resetEmailNameInput();
     console.log("submit");
+    console.log(firstNameValue, lastNameValue, emailValue);
   };
 
   const firstNameInputClasses = firstNameInputHasError
@@ -75,7 +76,7 @@ const BasicForm = (props) => {
             id="name"
             onChange={firstNameChangedHandler}
             onBlur={firstNameBlurHandler}
-            value={enteredFirstName}
+            value={firstNameValue}
           />
           {firstNameInputHasError && (
             <p className="error-text">First Name must not be empty.</p>
@@ -89,7 +90,7 @@ const BasicForm = (props) => {
             id="name"
             onChange={lastNameChangedHandler}
             onBlur={lastNameBlurHandler}
-            value={enteredLastName}
+            value={lastNameValue}
           />
           {lastNameInputHasError && (
             <p className="error-text">Last Name must not be empty.</p>
@@ -104,7 +105,7 @@ const BasicForm = (props) => {
           id="email"
           onChange={emailChangedHandler}
           onBlur={emailBlurHandler}
-          value={enteredEmail}
+          value={emailValue}
         />
         {emailInputHasError && (
           <p className="error-text">Email must not be empty.</p>
