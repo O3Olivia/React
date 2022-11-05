@@ -48,6 +48,14 @@ const Checkout = (props) => {
       return;
     }
 
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    }); // cart에 있는 subOrderHandler와 연결.
+    //cart component로 데이터 입력
+
     // submit cart data
   };
 
