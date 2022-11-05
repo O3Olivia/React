@@ -1,0 +1,89 @@
+.form {
+    margin: 1rem 0;
+    height: 15rem;
+    overflow: auto;
+    margin-top: 13px;
+}
+
+.control {
+    margin-bottom: 0.1rem;
+}
+.control .street  {
+    float: left;
+    width: 60%;
+}
+.control .street input{
+    width: 100%;
+}
+
+.control .city {
+    float: left;
+    width: 30%;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.control label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.control input {
+    font: inherit;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 30px;
+    padding: 15px;
+    width: 20rem;
+    height: 1.5rem;
+    width: 90%;
+}
+.control input:focus{
+    border-color:#ffe6dc;
+    outline: none;
+    background-color: #ffe6dc;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.actions button {
+    font: inherit;
+    color: #FF7E36;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 2rem;
+    margin-top: 15px;
+}
+
+.actions button:hover,
+.actions button:active {
+    background-color: #ffe6dc;
+    
+}
+
+.actions .submit {
+    border: 1px solid #FF7E36;
+    background-color: #FF7E36;
+    color: white;
+}
+
+.actions .submit:hover,
+.actions .submit:active {
+    background-color: #ff7c36a9;
+    border-color: #ff7c36a9;
+}
+
+.invalid label {
+    color: #ca3e51;
+}
+
+.invalid input {
+    border-color: #aa0b20;
+    background-color: #ffeff1;
+}
