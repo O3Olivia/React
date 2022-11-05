@@ -11,6 +11,11 @@
     font-weight: bolder;
     margin: 60px;
 }
+.MealsError{
+    text-align: center;
+    color:red;
+ 
+}
 
 .meals ul {
     list-style: none;
