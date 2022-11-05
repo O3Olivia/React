@@ -7,6 +7,8 @@ import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import Checkout from "./Checkout";
 
+import completeImg from "../../assets/complete.png";
+
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -93,11 +95,13 @@ const Cart = (props) => {
 
   const didSubmitModalContent = (
     <React.Fragment>
-      <p>Successfully sent the order!</p>
       <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onClose}>
-          Close
+        <button className={classes.closeButton} onClick={props.onClose}>
+          ESC
         </button>
+      </div>
+      <div className={classes["main-image"]}>
+        <img src={completeImg} alt="complete pic" className={["main-image"]} />
       </div>
     </React.Fragment>
   );
