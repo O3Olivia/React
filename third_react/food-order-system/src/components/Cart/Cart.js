@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
@@ -9,6 +9,9 @@ import Checkout from "./Checkout";
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
+
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -27,9 +30,10 @@ const Cart = (props) => {
     setIsCheckout(true);
   };
 
-  const subOrderHandler = (userData) => {
+  const subOrderHandler = async (userData) => {
+    setIsSubmit(true);
     // back-end로 checkout에서 받은 name, street, city, postalCode 정보 + Cart정보  요청 보내야함
-    fetch(
+    await fetch(
       "https://react-http-2a48b-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json",
       {
         method: "POST",
@@ -39,6 +43,8 @@ const Cart = (props) => {
         }),
       }
     );
+    setIsSubmit(false);
+    setDidSubmit(true);
   };
 
   const cartItems = (
@@ -69,8 +75,8 @@ const Cart = (props) => {
     </div>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const cartModalContent = (
+    <React.Fragment>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -79,7 +85,19 @@ const Cart = (props) => {
       {isCheckout && (
         <Checkout onConfirm={subOrderHandler} onCancel={props.onClose} />
       )}
-      {!isCheckout && modalActions}
+      {!isCheckout && modalActions};
+    </React.Fragment>
+  );
+
+  const isSubmitModalContent = <p>Sending order data...</p>;
+
+  const didSubmitModalContent = <p>Successfully sent the order!</p>;
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmit && cartModalContent}
+      {isSubmit && isSubmitModalContent}
+      {didSubmit && didSubmitModalContent}
     </Modal>
   );
 };
