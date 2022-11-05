@@ -85,19 +85,28 @@ const Cart = (props) => {
       {isCheckout && (
         <Checkout onConfirm={subOrderHandler} onCancel={props.onClose} />
       )}
-      {!isCheckout && modalActions};
+      {!isCheckout && modalActions}
     </React.Fragment>
   );
 
   const isSubmitModalContent = <p>Sending order data...</p>;
 
-  const didSubmitModalContent = <p>Successfully sent the order!</p>;
+  const didSubmitModalContent = (
+    <React.Fragment>
+      <p>Successfully sent the order!</p>
+      <div className={classes.actions}>
+        <button className={classes.button} onClick={props.onClose}>
+          Close
+        </button>
+      </div>
+    </React.Fragment>
+  );
 
   return (
     <Modal onClose={props.onClose}>
-      {!isSubmit && cartModalContent}
+      {!isSubmit && !didSubmit && cartModalContent}
       {isSubmit && isSubmitModalContent}
-      {didSubmit && didSubmitModalContent}
+      {!isSubmit && didSubmit && didSubmitModalContent}
     </Modal>
   );
 };
