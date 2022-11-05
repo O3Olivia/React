@@ -13,7 +13,7 @@ Simple Food Ordering System
 <img width="643" src="https://user-images.githubusercontent.com/87024040/200139576-85175574-b0ba-4a46-8196-46659f6f2210.gif">
 
 ## ⚙️ DataBase
-firebase
-<img width="643" src="https://user-images.githubusercontent.com/87024040/200139648-302c5dfe-5d6a-4153-a19a-e331cae0cefc.png">
+<img width="300" src="https://user-images.githubusercontent.com/87024040/200139648-302c5dfe-5d6a-4153-a19a-e331cae0cefc.png">
+<p>firebase</p>
 
 
