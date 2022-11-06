@@ -12,8 +12,8 @@ body {
 button {
   font: inherit;
   cursor: pointer;
-  background-color: #3c0080;
-  border: 1px solid #3c0080;
+  background-color:#dcb0ed;
+  border: 1px solid #dcb0ed;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
@@ -21,6 +21,6 @@ button {
 
 button:hover,
 button:active {
-  background-color: #5b14ac;
-  border-color: #5b14ac;
+  background-color: #99c99c;
+  border-color: #99c99c;
 }

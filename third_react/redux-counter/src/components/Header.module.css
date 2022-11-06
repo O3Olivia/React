@@ -29,13 +29,13 @@
 
 .header a:hover,
 .header a:active {
-  color: #b864da;
+  color: #dcb0ed;
 }
 
 .header button {
   font-size: 1.25rem;
-  background-color: #ffbb00;
-  border: 1px solid #ffbb00;
+  background-color: #99c99c;
+  border: 1px solid #99c99c;
   padding: 0.5rem 1.5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   color: #2c2922;
