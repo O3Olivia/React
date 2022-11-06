@@ -11,6 +11,9 @@ const Counter = () => {
   const decrementHandler = () => {
     dispatch({ type: "decrement" });
   };
+  const increaseHandler = () => {
+    dispatch({ type: "increase", value: 5 }); //index의 속성과 정확하게 같은 이름이여야한다. store에서 action.value에서 value대신 amount나 다른 속성이름으로 설정한다면, value가 아닌 amount나 설정한 이름으로 저장해야한다. 그렇지않으면 NaN이 뜸.
+  };
 
   const toggleCounterHandler = () => {};
 
@@ -20,6 +23,7 @@ const Counter = () => {
       <div className={classes.value}>{counter}</div>
       <div>
         <button onClick={incrementHandler}>+</button>
+        <button onClick={increaseHandler}>+5</button>
         <button onClick={decrementHandler}>-</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
