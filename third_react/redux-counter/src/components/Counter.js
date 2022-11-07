@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
+
+import { counterActions } from "../store/index";
+
 import classes from "./Counter.module.css";
-import { INCREMENT } from "../store/index";
 
 const Counter = () => {
   const dispatch = useDispatch();
@@ -9,17 +11,17 @@ const Counter = () => {
   const show = useSelector((state) => state.showCounter);
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
   };
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
   const increaseHandler = () => {
-    dispatch({ type: "increase", value: 5 }); //index의 속성과 정확하게 같은 이름이여야한다. store에서 action.value에서 value대신 amount나 다른 속성이름으로 설정한다면, value가 아닌 amount나 설정한 이름으로 저장해야한다. 그렇지않으면 NaN이 뜸.
+    dispatch(counterActions.increase(5)); //index의 속성과 정확하게 같은 이름이여야한다. store에서 action.value에서 value대신 amount나 다른 속성이름으로 설정한다면, value가 아닌 amount나 설정한 이름으로 저장해야한다. 그렇지않으면 NaN이 뜸.
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter);
   };
 
   return (
