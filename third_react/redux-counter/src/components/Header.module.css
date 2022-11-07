@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3c0080;
+  background-color: #dcb0ed;
   color: white;
   padding: 0 10%;
 }
@@ -29,20 +29,22 @@
 
 .header a:hover,
 .header a:active {
-  color: #dcb0ed;
+  color: #a7d1aa;
 }
 
 .header button {
   font-size: 1.25rem;
-  background-color: #99c99c;
-  border: 1px solid #99c99c;
+  background-color: #dcb0ed;
+  border: 1px solid #dcb0ed;
   padding: 0.5rem 1.5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  color: #2c2922;
+  color: white;
+  font-weight: bolder;
 }
 
 .header button:hover,
 .header button:active {
-  background-color: #ffa600;
-  border-color: #ffa600;
+  background-color: #a7d1aa;
+  color: white;
+  border-color: #99c99c;
 }
