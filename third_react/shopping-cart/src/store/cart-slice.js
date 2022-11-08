@@ -5,9 +5,12 @@ const cartSlice = createSlice({
   initialState: {
     items: [],
     totalQuantity: 0,
-    totalAmount: 0,
   },
   reducers: {
+    replaceCart(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
@@ -35,7 +38,6 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== id); // id와 동일하지 않은 id만 필터링해서 제거하고 새로운 array
       } else {
         existingItem.quantity--;
-        existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
     },
   },
