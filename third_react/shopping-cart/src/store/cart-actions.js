@@ -1,4 +1,4 @@
-import { uiAction } from "./ui-slice";
+import { uiActions } from "./ui-slice";
 import { cartActions } from "./cart-slice";
 
 export const fetchCartData = () => {
@@ -10,12 +10,13 @@ export const fetchCartData = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Could not fetch cart data");
+        throw new Error("Could not fetch cart data!");
       }
       const data = await response.json();
 
       return data;
     };
+
     try {
       const cartData = await fetchData();
       // firebase에 저장되는 형태
@@ -27,7 +28,7 @@ export const fetchCartData = () => {
       ); // cartData를 payload로 전달
     } catch (error) {
       dispatch(
-        uiAction.showNotification({
+        uiActions.showNotification({
           status: "error",
           title: "Error!",
           message: "Fetching cart data failed!",
@@ -35,12 +36,13 @@ export const fetchCartData = () => {
       );
     }
   };
-}; // firebase에 있는 데이터 가져오기
+};
+// firebase에 있는 데이터 가져오기
 
 export const sendCartData = (cart) => {
   return async (dispatch) => {
     dispatch(
-      uiAction.showNotification({
+      uiActions.showNotification({
         status: "pending",
         title: "Sending...",
         message: "Sending cart data",
@@ -55,7 +57,7 @@ export const sendCartData = (cart) => {
           body: JSON.stringify({
             items: cart.items,
             totalQuantity: cart.totalQuantity,
-          }), // 이렇게하면 changes 정보는 보내지지 않는다.
+          }), // 이렇게하면 changed 정보는 보내지지 않는다.
         }
       );
       if (!response.ok) {
@@ -67,7 +69,7 @@ export const sendCartData = (cart) => {
       await sendRequest();
 
       dispatch(
-        uiAction.showNotification({
+        uiActions.showNotification({
           status: "success",
           title: "Success...",
           message: "Sent cart data successfully",
@@ -75,7 +77,7 @@ export const sendCartData = (cart) => {
       );
     } catch (error) {
       dispatch(
-        uiAction.showNotification({
+        uiActions.showNotification({
           status: "error",
           title: "Error!",
           message: "Sending cart data failed!",
