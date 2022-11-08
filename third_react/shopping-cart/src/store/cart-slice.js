@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     items: [],
     totalQuantity: 0,
-    changed: false,
+    changed: false, // 변경될때에만 다시 보내도록 하기 위해 설정
   },
   reducers: {
     replaceCart(state, action) {
@@ -41,6 +41,7 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== id);
       } else {
         existingItem.quantity--;
+        existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
     },
   },

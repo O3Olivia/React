@@ -50,7 +50,13 @@ export const sendCartData = (cart) => {
     const sendRequest = async () => {
       const response = await fetch(
         "https://react-http-2a48b-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
-        { method: "PUT", body: JSON.stringify(cart) }
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }), // 이렇게하면 changes 정보는 보내지지 않는다.
+        }
       );
       if (!response.ok) {
         throw new Error("Sending cart data failed.");

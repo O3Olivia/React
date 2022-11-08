@@ -25,7 +25,9 @@ function App() {
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if (cart.change) {
+      dispatch(sendCartData(cart)); // 변경이 있으면 firebase로 보내고 아니면 안보냄
+    }
   }, [cart, dispatch]);
 
   return (
