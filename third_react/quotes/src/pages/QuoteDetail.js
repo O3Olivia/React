@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { useParams, Route, Link } from "react-router-dom";
+import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
 
 import Comments from "../components/comments/Comments";
 import HighLightedQuote from "../components/quotes/HighlightedQuote";
@@ -11,6 +11,7 @@ const DUMMY_QUOTES = [
 ];
 
 const QuoteDetail = () => {
+  const match = useRouteMatch();
   const params = useParams();
 
   const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId); //params = URL
@@ -22,16 +23,17 @@ const QuoteDetail = () => {
   return (
     <Fragment>
       <HighLightedQuote text={quote.text} author={quote.author} />
-      <Route path={`/quotes/${params.quoteId}`} exact>
+      <Route path={`${match.path}`} exact>
         {/* exactly /comment 없으면 Load Comments가 보이고, 이걸로 Path가 정확하지 않으면 LoadComments가 안뜬다*/}
         <div className="centered">
-          <Link className="btn--flat" to={`/quotes/${params.quoteId}/comments`}>
+          <Link className="btn--flat" to={`${match.url}/comments`}>
+            {/* url은 id값이 실제로 나오고 path는 그냥 quoteID로되어있어서 not found가뜬다. 정확한 id의 comment가 떠야하니까 정확한 ID값이 뜬 url을 사용 */}
             Load Comments
           </Link>
         </div>
       </Route>
 
-      <Route path={`/quotes/${params.quoteId}/comments`}>
+      <Route path={`${match.path}/comments`}>
         <Comments />
       </Route>
       {/* <Route path="/quotes/:quoteId/comments" /> */}
