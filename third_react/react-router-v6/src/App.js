@@ -15,6 +15,7 @@ function App() {
           <Route path="/welcome" element={<Welcome />}>
             <Route path="new-user" element={<p>Welcome, New user!</p>}></Route>
           </Route>
+
           <Route path="/products/*" element={<Products />} />
           <Route path="/products/:productId" element={<ProductDetail />} />
         </Routes>
