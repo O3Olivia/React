@@ -27,6 +27,12 @@ const router = createBrowserRouter(
           path=":id"
           element={<PostDetailPage />}
           loader={blogDetailLoader}
+          errorElement={
+            <p>
+              Opps!
+              <br /> An Error Occurred!
+            </p>
+          }
         />
       </Route>
       <Route path="/blog/new" element={<NewPostPage />} />
