@@ -1,14 +1,21 @@
-import { redirect, useNavigate } from "react-router-dom";
+import { redirect, useActionData, useNavigate } from "react-router-dom";
 
 import NewPostForm from "../components/NewPostForm";
 import { savePost } from "../util/api";
 
 function NewPostPage() {
+  const data = useActionData();
   const navigate = useNavigate();
+
+  function cancelHandler() {
+    navigate("/blog");
+  }
 
   return (
     <>
-      <NewPostForm onCancel={cancelHandler} submitting={isSubmitting} />
+      {data && data.status && <p>{data.message}</p>}
+      {/* 데이터가 셋팅되었고 && 설정된 데이터가 오류상태면  && message를 출력 */}
+      <NewPostForm onCancel={cancelHandler} submitting={false} />
     </>
   );
 }
@@ -29,8 +36,8 @@ export async function action({ request }) {
     savePost(post); // post는 문제가 생길 수 있기 때문에 try catch를 사용한다.
   } catch (error) {
     if (error.status === 422) {
-      // tbd
-      throw error;
+      // 422: 유효성 오류
+      return error; // throw하지 않고 return하면, 같은 페이지에 머물면서 redirect되지 않고 오류 페이지를 로딩하지 않는다.
     }
     throw error;
   }
