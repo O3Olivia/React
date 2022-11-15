@@ -1,8 +1,8 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Products = () => {
-  const history = useHistory();
-  history.push("/");
+  const navigate = useNavigate();
+  navigate("/welcome", { replace: true });
   return (
     <section>
       <h1>The Products Page</h1>
