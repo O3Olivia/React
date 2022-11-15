@@ -13,10 +13,11 @@ import NewPostPage from "./pages/NewPost";
 import PostDetailPage, { loader as blogDetailLoader } from "./pages/PostDetail";
 import RootLayout from "./pages/RootLayout";
 import WelcomePage from "./pages/Welcome";
+import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
       {/* 대빵 */}
 
       <Route index element={<WelcomePage />} />
@@ -27,12 +28,13 @@ const router = createBrowserRouter(
           path=":id"
           element={<PostDetailPage />}
           loader={blogDetailLoader}
-          errorElement={
-            <p>
-              Opps!
-              <br /> An Error Occurred!
-            </p>
-          }
+          // errorElement={
+          //   <p>
+          //     Opps!
+          //     <br /> An Error Occurred!
+          //   </p>
+          // }
+          // errorElement는 데이터 로딩 중 오류가 생겼을 때 무엇을 표시하는지 설정함. -> 이렇게 작성해도 되고, 부모 라우트에 errorElement로 해서 errorPage컴포넌트를 만들어도 된다.
         />
       </Route>
       <Route path="/blog/new" element={<NewPostPage />} />
