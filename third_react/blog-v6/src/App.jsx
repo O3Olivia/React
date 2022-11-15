@@ -9,7 +9,7 @@ import {
 import BlogLayout from "./pages/BlogLayout";
 import BlogPostsPage, { loader as blogPostsLoader } from "./pages/BlogPosts";
 // BlogPost에서 export했던 loader를 이렇게 불러온다. 대신 loader의 종류가 많아지기 때문에 헤깔리지 않도록 이름을 따로 지정.
-import NewPostPage from "./pages/NewPost";
+import NewPostPage, { action as newPostAction } from "./pages/NewPost";
 import PostDetailPage, { loader as blogDetailLoader } from "./pages/PostDetail";
 import RootLayout from "./pages/RootLayout";
 import WelcomePage from "./pages/Welcome";
@@ -37,7 +37,11 @@ const router = createBrowserRouter(
           // errorElement는 데이터 로딩 중 오류가 생겼을 때 무엇을 표시하는지 설정함. -> 이렇게 작성해도 되고, 부모 라우트에 errorElement로 해서 errorPage컴포넌트를 만들어도 된다.
         />
       </Route>
-      <Route path="/blog/new" element={<NewPostPage />} />
+      <Route
+        path="/blog/new"
+        element={<NewPostPage />}
+        action={newPostAction}
+      />
     </Route>
   )
 );

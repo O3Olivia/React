@@ -1,45 +1,39 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 import NewPostForm from "../components/NewPostForm";
 import { savePost } from "../util/api";
 
 function NewPostPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState();
   const navigate = useNavigate();
-
-  async function submitHandler(event) {
-    event.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const formData = new FormData(event.target);
-      const post = {
-        title: formData.get("title"),
-        body: formData.get("post-text"),
-      };
-      await savePost(post);
-      navigate("/");
-    } catch (err) {
-      setError(err);
-    }
-    setIsSubmitting(false);
-  }
-
-  function cancelHandler() {
-    navigate("/blog");
-  }
 
   return (
     <>
-      {error && <p>{error.message}</p>}
-      <NewPostForm
-        onCancel={cancelHandler}
-        onSubmit={submitHandler}
-        submitting={isSubmitting}
-      />
+      <NewPostForm onCancel={cancelHandler} submitting={isSubmitting} />
     </>
   );
 }
 
 export default NewPostPage;
+
+export async function action({ request }) {
+  // 생성된 request객체에는 form(NewPostForm)에서 제출된 데이터를 포함하고 있다.
+  // 따라서 input값으로 지정된 name을 이용해 데이터를 추출할 수 있다.
+
+  // async를 적는 이유는 request 객체에 formData 메소드를 실행하여, Promise를 반환하고 await할거기 때문.
+  const formData = await request.formData();
+  const post = {
+    title: formData.get("title"), // NewPostFrom에서 name의 값
+    body: formData.get("post-text"),
+  };
+  try {
+    savePost(post); // post는 문제가 생길 수 있기 때문에 try catch를 사용한다.
+  } catch (error) {
+    if (error.status === 422) {
+      // tbd
+      throw error;
+    }
+    throw error;
+  }
+  // try catch가 끝나면 백엔드에 게시물을 전송했다는 뜻이므로 사용자를 redirect해야한다. -> 게시물 올리면 blog페이지로 감
+  return redirect("/blog");
+}
