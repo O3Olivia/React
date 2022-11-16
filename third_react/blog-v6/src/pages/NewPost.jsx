@@ -1,4 +1,9 @@
-import { redirect, useActionData, useNavigate } from "react-router-dom";
+import {
+  redirect,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 
 import NewPostForm from "../components/NewPostForm";
 import { savePost } from "../util/api";
@@ -6,6 +11,7 @@ import { savePost } from "../util/api";
 function NewPostPage() {
   const data = useActionData();
   const navigate = useNavigate();
+  const navigation = useNavigation();
 
   function cancelHandler() {
     navigate("/blog");
@@ -15,7 +21,10 @@ function NewPostPage() {
     <>
       {data && data.status && <p>{data.message}</p>}
       {/* 데이터가 셋팅되었고 && 설정된 데이터가 오류상태면  && message를 출력 */}
-      <NewPostForm onCancel={cancelHandler} submitting={false} />
+      <NewPostForm
+        onCancel={cancelHandler}
+        submitting={navigation.state === "submitting"}
+      />
     </>
   );
 }
