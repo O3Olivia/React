@@ -9,6 +9,7 @@ import BoardPage from "./pages/board/boardPage";
 import AdminPage from "./pages/adminPage";
 import CartPage from "./pages/cartPage";
 import LoadingSpin from "./components/Layout/LoadingSpin";
+import BoardDetailPage from "./pages/board/boardDetailPage";
 
 const NewBoard = React.lazy(() => import("./pages/board/NewBoardPage"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
@@ -28,6 +29,7 @@ function App() {
           <Route path="/products" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/boards" element={<BoardPage />} />
+          <Route path="/boards/:boardId" element={<BoardDetailPage />} />
           <Route path="/create-board" element={<NewBoard />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminPage />} />

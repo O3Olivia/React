@@ -48,6 +48,7 @@ const QuoteDetail = () => {
       />
       <Route path={`${match.path}`} exact>
         {/* exactly /comment 없으면 Load Comments가 보이고, 이걸로 Path가 정확하지 않으면 LoadComments가 안뜬다*/}
+
         <div className="centered">
           <Link className="btn--flat" to={`${match.url}/comments`}>
             {/* url은 id값이 실제로 나오고 path는 그냥 quoteID로되어있어서 not found가뜬다. 정확한 id의 comment가 떠야하니까 정확한 ID값이 뜬 url을 사용 */}
