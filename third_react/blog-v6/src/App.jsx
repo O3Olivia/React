@@ -12,7 +12,6 @@ import ErrorPage from "./pages/Error";
 import DeferredBlogPostsPage, {
   loader as deferredBlogPostsPageLoader,
 } from "./pages/DeferredBlogPosts";
-import NewsletterSignup from "./components/NewsletterSignup";
 
 const router = createBrowserRouter([
   {

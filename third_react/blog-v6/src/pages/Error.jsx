@@ -3,6 +3,7 @@ import MainNavigation from "../components/MainNavigation";
 
 function ErrorPage() {
   const error = useRouteError();
+
   return (
     <>
       <MainNavigation />

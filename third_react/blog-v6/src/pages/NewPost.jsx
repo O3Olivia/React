@@ -19,7 +19,7 @@ function NewPostPage() {
 
   return (
     <>
-      {data && data.status && <p>{data.message}</p>}
+      {data && data.isError && <p>{data.message}</p>}
       {/* 데이터가 셋팅되었고 && 설정된 데이터가 오류상태면  && message를 출력 */}
       <NewPostForm
         onCancel={cancelHandler}
