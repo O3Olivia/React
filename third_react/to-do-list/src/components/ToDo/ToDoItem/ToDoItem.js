@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import './ToDoItem.css';
+import "./ToDoItem.css";
 
-const ToDoItem = props => {
+const ToDoItem = (props) => {
   // const [deleteText, setDeleteText] = useState('');
 
   const deleteHandler = () => {
@@ -17,6 +17,5 @@ const ToDoItem = props => {
     </li>
   );
 };
-
 
 export default ToDoItem;
