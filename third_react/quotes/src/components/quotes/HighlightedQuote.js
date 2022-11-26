@@ -21,6 +21,7 @@ const HighlightedQuote = (props) => {
   return (
     <figure className={classes.quote}>
       <button onClick={deleteHandler}>DELETE</button>
+
       <p>{props.text}</p>
       <figcaption>{props.author}</figcaption>
       <p>{props.date}</p>
