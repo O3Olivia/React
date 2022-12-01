@@ -18,7 +18,7 @@ export const getClient = (() => {
     }
 })();
 
-const BASE_URL = 'https://api.storerestapi.com';
+const BASE_URL = 'https://fakestoreapi.com';
 
 export const fetcher = async({
     method,
