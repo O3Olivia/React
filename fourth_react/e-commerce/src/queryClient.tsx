@@ -13,7 +13,19 @@ type anyObj = { [key: string]: any };
 export const getClient = (() => {
     let client: QueryClient | null = null;
     return () => {
-        if (!client) client = new QueryClient({})
+        if (!client) client = new QueryClient({
+            defaultOptions: {
+                queries: {
+                    cacheTime : 1000 * 60 * 60* 24,
+                    staleTime: 1000 * 60,
+                    refetchOnMount: false, //쓸데없는 요청들 다 false해서 없앰. => 값이 필요하지 않다.
+                    // 이렇게되면 cache를 한번 요청하고나면 또 다시 같은 cache를 요청할 필요가 없다.
+                    // 대신 새로고침을 하면 다시 불러온다 
+                    refetchOnReconnect: false,
+                    refetchOnWindowFocus: false,
+                },
+            },
+        })
         return client
     }
 })();
@@ -32,14 +44,21 @@ export const fetcher = async({
         params?: anyObj;
 }) => { 
     try {
-        const url = `${BASE_URL}${path}`; 
+        let url = `${BASE_URL}${path}`; 
         const fetchOptions: RequestInit = {
             method,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': BASE_URL,
-            }
+            },
         }
+
+        if (params) { 
+            const searchParams = new URLSearchParams(params)
+            url += '?' + searchParams.toString()
+        }
+        if(body) fetchOptions.body = JSON.stringify(body)
+
         const res = await fetch(url, fetchOptions);
         const json = await res.json();
         return json
