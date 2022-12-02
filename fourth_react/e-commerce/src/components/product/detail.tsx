@@ -1,31 +1,21 @@
-import { Product } from "../../types";
-import { TfiHeart } from "react-icons/tfi";
+import { Product } from "../../graphql/products";
 
 const prdDetail = ({
     item: {
-        category,
-        title,
-        image,
-        description,
-        price,
-        rating: { rate },
-    },
+      title, imageUrl, description, price
+  },
 }: { 
         item:Product
-    }
-
-  ) => (
+    }) => (
   <div className='product-detail'>
       <div className='image'>
-        <img className='product-detail__image' src={image} />
+        <img className='product-detail__image' src={imageUrl} />
       </div>
       <div className='title'>
-        <p className='product-detail__category'>{category}</p>
         <h3 className='product-detail__title'>{title}</h3>
         <span className="product-detail__price">${price} | </span>
-        <span className="product-detail__rating">
-          <span className="heartEmoji"><TfiHeart /></span>{rate}</span>
-         <p className='product-detail__description'>{description}</p>
+        <span className="product-detail__rating"></span>
+        <p className='product-detail__description'>{description}</p>
       </div>
     </div>
   )
