@@ -38,7 +38,7 @@ const AuthForm = () => {
         } else {
           // error
           return response.json().then((data) => {
-            console.log(data);
+            alert(data.error.message);
           });
         }
       });
