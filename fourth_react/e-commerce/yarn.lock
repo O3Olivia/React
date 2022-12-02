@@ -1185,6 +1185,7 @@ __metadata:
     "@types/uuid": ^9.0.0
     "@vitejs/plugin-react": ^2.2.0
     graphql-request: ^5.0.0
+    graphql-tag: ^2.12.6
     msw: ^0.49.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -1704,6 +1705,17 @@ __metadata:
   peerDependencies:
     graphql: 14 - 16
   checksum: 2e8900d10cded401b253a05650719321123e3b0ad5bc57523288892e0226dccf43668ec937753420084f649fb4e3f998f2547c884b746a3e91fa0a43f93e62d4
+  languageName: node
+  linkType: hard
+
+"graphql-tag@npm:^2.12.6":
+  version: 2.12.6
+  resolution: "graphql-tag@npm:2.12.6"
+  dependencies:
+    tslib: ^2.1.0
+  peerDependencies:
+    graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: b15162a3d62f17b9b79302445b9ee330e041582f1c7faca74b9dec5daa74272c906ec1c34e1c50592bb6215e5c3eba80a309103f6ba9e4c1cddc350c46f010df
   languageName: node
   linkType: hard
 

@@ -1,11 +1,10 @@
 // src/mocks/handlers.js
 import { graphql } from 'msw'
-import { QueryKeys } from '../queryClient'
 import { v4 as uuid } from "uuid";
 import GET_PRODUCTS from '../graphql/products';
 const mock_products = Array.from({ length: 21 }).map((_, i)=> ({
     id: uuid(),
-    imageUrl: `https://placeimg.com/640/360/${i + 1}`, 
+    imageUrl: `https://placeimg.com/200/480/${i + 1}`, 
     price: 50000,
     title: `임시상품 ${i + 1}`,
     description: `임시 상세 내용 ${i + 1}`,
@@ -16,7 +15,7 @@ export const handlers = [
     graphql.query(GET_PRODUCTS, (req, res, ctx) => { 
         return res(
             ctx.data({
-                products: mock_products
+                products: mock_products,
             }),
         )
     }),

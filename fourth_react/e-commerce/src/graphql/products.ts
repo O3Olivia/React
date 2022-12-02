@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "graphql-tag";
 
 // 타입 정하기 
 export type PRODUCT = {
@@ -8,6 +8,10 @@ export type PRODUCT = {
     title: string
     description: string
     createdAt:string
+}
+
+export type PRODUCTS = {
+    products:PRODUCT[]
 }
 
 const GET_PRODUCTS = gql`
