@@ -1,10 +1,14 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 
+import AuthContext from "../../store/auth-context";
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
   const pwdInputRef = useRef();
+
+  const authCtx = useContext(AuthContext); // AuthContext로 접근 가능하게 함
+
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   // 로딩상태가되면 isLoading이 true가 되도록 설정
@@ -60,7 +64,8 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        console.log(data);
+        // 회원가입이나 로그인에 성공한다면 token이 생김. => context에서 login에 데이터의 idToken을 불러줌
+        authCtx.login(data.idToken);
       })
       .catch((error) => {
         alert(error.errorMsg);

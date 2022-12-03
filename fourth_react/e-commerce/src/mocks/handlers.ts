@@ -5,7 +5,7 @@ import GET_PRODUCTS, { GET_PRODUCT } from '../graphql/products';
 
 const mock_products = Array.from({ length: 21 }).map((_, i) => ({
     id: uuid(),
-    imageUrl: `https://placeimg.com/200/480/${i + 1}`, 
+    imageUrl: `https://placeimg.com/640/480/${i + 1}`, 
     price: 50000,
     title: `임시상품 ${i + 1}`,
     description: `임시 상세 내용 ${i + 1}`,
