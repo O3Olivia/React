@@ -9,6 +9,11 @@ const MainNavigation = () => {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
+  const logoutHandler = () => {
+    alert("See you again!");
+    authCtx.logout();
+    // 비밀번호를 변경하는 화면에서 로그아웃하면 nav 메뉴는 바뀌지만, 메인 화면은 바뀌지 않는다.
+  };
   return (
     <header className={classes.header}>
       <Link to="/">
@@ -27,7 +32,7 @@ const MainNavigation = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button>Logout</button>
+              <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
         </ul>
