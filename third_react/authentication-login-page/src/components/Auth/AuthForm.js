@@ -54,10 +54,9 @@ const AuthForm = () => {
           return response.json().then((data) => {
             let errorMsg = "Authentication failed";
             // if (data && data.error && data.error.message) {
-            //   // 이 모든게 참이면
+            //   //   // 이 모든게 참이면
             //   errorMsg = data.error.message;
             //   // errorMsg에 좀 더 specific 메세지를 설정하여 세부적인 메세지를 alert에 띄울 수 있다.
-            // }
 
             throw new Error(errorMsg);
           });
@@ -68,7 +67,7 @@ const AuthForm = () => {
         authCtx.login(data.idToken);
       })
       .catch((error) => {
-        alert(error.errorMsg);
+        alert(error.message);
       });
   };
 
