@@ -1,9 +1,13 @@
 import { useState, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import AuthContext from "../../store/auth-context";
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
+  // 로그인하면 홈으로 돌아가도록 경로 설정
+  const navigate = useNavigate();
+
   const emailInputRef = useRef();
   const pwdInputRef = useRef();
 
@@ -65,6 +69,8 @@ const AuthForm = () => {
       .then((data) => {
         // 회원가입이나 로그인에 성공한다면 token이 생김. => context에서 login에 데이터의 idToken을 불러줌
         authCtx.login(data.idToken);
+        // redirect
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         alert(error.message);
