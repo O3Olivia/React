@@ -5,7 +5,7 @@ import GET_CART from '../graphql/cart';
 import GET_PRODUCTS, { GET_PRODUCT } from '../graphql/products';
 
 const mock_products = Array.from({ length: 21 }).map((_, i) => ({
-    id: uuid(),
+    id: i + '',
     imageUrl: `https://placeimg.com/640/480/${i + 1}`, 
     price: 50000,
     title: `임시상품 ${i + 1}`,
@@ -24,7 +24,7 @@ export const handlers = [
     graphql.query(GET_PRODUCT,
         (req, res, ctx) => { 
             const found = mockProducts.find()
-            
+
            return res(ctx.data(mock_products[0]))
            
         }),
