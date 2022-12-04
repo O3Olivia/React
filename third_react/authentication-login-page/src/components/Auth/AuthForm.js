@@ -67,8 +67,11 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        );
         // 회원가입이나 로그인에 성공한다면 token이 생김. => context에서 login에 데이터의 idToken을 불러줌
-        authCtx.login(data.idToken);
+        authCtx.login(data.idToken, expirationTime.toISOString());
         // redirect
         navigate("/", { replace: true });
       })

@@ -7,8 +7,19 @@ const AuthContext = React.createContext({
   logout: () => {},
 });
 
+const calculateRemainingTime = (expirationTime) => {
+  const currentTime = new Date().getTime(); // current time
+  const adjExpirationTime = new Date(expirationTime).getTime(); // future
+  //
+
+  const remainingDuration = adjExpirationTime - currentTime;
+
+  return remainingDuration;
+};
+
 export const AuthContextProvider = (props) => {
-  const [token, setToken] = useState(null);
+  const initialToken = localStorage.getItem("token");
+  const [token, setToken] = useState(initialToken);
   // 따로 login state를 만들 필요 없이 token이 있으면 로그인 상태, token이 없으면 로그인이 안되있는 상태로 알 수 있다.
 
   const userIsLoggedIn = !!token;
@@ -16,11 +27,17 @@ export const AuthContextProvider = (props) => {
   // if the token is string not empty it returns true, if the token string is empty it returns false.
 
   // token state 바꾸는 Handler
-  const loginHandler = (token) => {
-    setToken(token);
-  };
   const logoutHandler = () => {
     setToken(null);
+    localStorage.removeItem("token");
+  };
+  const loginHandler = (token, expirationTime) => {
+    setToken(token);
+    localStorage.setItem("token", token);
+
+    const remainingTime = calculateRemainingTime(expirationTime);
+
+    setTimeout(logoutHandler, remainingTime);
   };
 
   // context 값
