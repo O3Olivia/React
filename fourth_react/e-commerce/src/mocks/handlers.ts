@@ -1,6 +1,7 @@
 // src/mocks/handlers.js
 import { graphql } from 'msw'
 import { v4 as uuid } from "uuid";
+import GET_CART from '../graphql/cart';
 import GET_PRODUCTS, { GET_PRODUCT } from '../graphql/products';
 
 const mock_products = Array.from({ length: 21 }).map((_, i) => ({
@@ -22,7 +23,12 @@ export const handlers = [
     }),
     graphql.query(GET_PRODUCT,
         (req, res, ctx) => { 
+            const found = mockProducts.find()
+            
            return res(ctx.data(mock_products[0]))
            
-        })
+        }),
+    graphql.query(GET_CART, (req, res, ctx) => { 
+        return res(ctx.data({}))
+    }), 
 ]
