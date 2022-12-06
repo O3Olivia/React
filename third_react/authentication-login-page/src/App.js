@@ -19,9 +19,7 @@ function App() {
         {authCtx.isLoggedIn && (
           <Route path="/profile" element={<UserProfile />} />
         )}
-
         {/* 만약 사용자가 로그인 상태가 아닌데 profile로 들어가거나 변경화면에서 로그아웃할경우, 메인으로 돌아감 = 접근 불가 */}
-
         <Route path="*" element={<WelcomePage />} />
       </Routes>
     </Layout>
