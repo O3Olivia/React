@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { Fragment, useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LogContext from "../../store/log-context";
 
@@ -39,7 +39,7 @@ const Login = (props) => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPwd = pwdInputRef.current.value;
 
-    setIsLogin(true);
+    setIsLoading(true);
     let url;
     if (isLogin) {
       url =
@@ -59,14 +59,16 @@ const Login = (props) => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
+      .then((res) => {
         setIsLoading(false);
-        if (response.ok) {
-          return response.json();
+        if (res.ok) {
+          return res.json();
         } else {
-          return response.json().then((data) => {
-            let errorMsg = "Authentication Failed!";
-
+          return res.json().then((data) => {
+            let errorMsg = "";
+            if (data && data.error && data.error.message) {
+              errorMsg = data.error.message;
+            }
             throw new Error(errorMsg);
           });
         }
@@ -79,13 +81,13 @@ const Login = (props) => {
 
         navigate("/", { replace: true });
       })
-      .catch((error) => {
-        alert(error.message);
+      .catch((err) => {
+        alert(err.message);
+        console.log(err);
       });
-    console.log("회원가입 성공!");
   };
   return (
-    <>
+    <Fragment>
       <form className={classes.loginForm} onSubmit={submitHandler}>
         <h1>{isLogin ? "로그인" : "회원가입"}</h1>
         {isLogin ? (
@@ -131,7 +133,7 @@ const Login = (props) => {
           </span>
         </div>
       </form>
-    </>
+    </Fragment>
   );
 };
 export default Login;

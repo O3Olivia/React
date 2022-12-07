@@ -84,7 +84,7 @@ header .menu li {
     margin-left: 0.8rem;
     animation: moveDown .2s forwards;
     padding: 5px 20px;
-    font-weight: 400;
+    font-weight: 500;
 }
 header .menu li:nth-child(1) {
     animation-delay: .1s;
