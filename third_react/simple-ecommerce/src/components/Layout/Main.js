@@ -10,7 +10,7 @@ const Main = () => {
         <source src={require("../../assets/intro.mp4")} type="video/ogg" />
       </video>
       <div className={classes.title}>
-        <h1>SK SS23 / STUDIO COLLECTION</h1>
+        <h1>SK SS 23 / STUDIO COLLECTION</h1>
         <h2>
           IT IS A COLLECTION OF "NEW CLASSIC" <br />
           THAT INCORPORATE TIMELESS SILHOUETTES <br />

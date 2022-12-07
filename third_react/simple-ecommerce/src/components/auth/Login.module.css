@@ -26,29 +26,38 @@
     margin-bottom: 1rem;
     font-size: 17px;
 }
-
-.pwdShow button {
-    position: absolute;
-    top: 47%;
-    left: 81%;
-    border: none;
-    background: none;
-    font-size: 22px;
-    color: #727272;
+.passwordInput{
+    position: relative;
+}
+.passwordInput > input {
+    width: 80%;
+    border: 1.5px solid #cacaca;
+    border-radius: 8px;
+    padding: 1rem 12px;
+    margin-bottom: 1rem;
+    font-size: 17px;
 }
 
 .loginForm>input:focus {
     outline: none;
     border: 1.5px solid black;
 }
-
+.loginForm .pwdShow{
+    top: 25%;
+    left: 85%;
+    border: none;
+    background: none;
+    font-size: 22px;
+    color: #727272;
+    position: absolute;
+}
 .loginBtn {
     width: 84%;
     border: 1px solid black;
     border-radius: 8px;
     background-color: black;
     padding: 0.8rem 12px;
-    margin: 3rem 0 2rem 0;
+    margin: 2.5rem 0 2rem 0;
     font-size: 25px;
     font-weight: bolder;
     color: white;
@@ -56,7 +65,7 @@
     
 }
 
-.pwdShow button:hover {
+.passwordInput .pwdShow button:hover {
     cursor: pointer;
     color: black;
 }
@@ -74,14 +83,19 @@
 
 .signUp>span {
     color: #727272;
-    font-size: 20px;
-    margin-right: 23px;
+    font-size: 16px;
+    margin-right: 63px;
     
 }
-
-.signUp .pullRight>a {
+.signUp .pullRight> button {
+    background-color: inherit;
+    border:none;
     color: black;
     text-decoration: underline;
     margin-right: -75px;
     float: right;
+}
+.signUp .pullRight>button:hover{
+    cursor: pointer;
+    color:#000000bb;
 }
