@@ -64,15 +64,13 @@
     transition: all 0.2s;
     
 }
-
-.passwordInput .pwdShow button:hover {
-    cursor: pointer;
-    color: black;
-}
-
-.loginBtn:hover {
+.loginForm button:hover {
     cursor: pointer;
     color: #efefef8b;
+}
+.loginForm .pwdShow:hover {
+    cursor: pointer;
+    color: #1e1e1ee1;
 }
 
 /* signUp & find email */
@@ -81,10 +79,10 @@
     margin-bottom: 0.67rem;
 }
 
-.signUp>span {
+.signUp > span {
     color: #727272;
     font-size: 16px;
-    margin-right: 63px;
+    margin-right: 106px;
     
 }
 .signUp .pullRight> button {
