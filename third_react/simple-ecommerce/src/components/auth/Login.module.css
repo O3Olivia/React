@@ -1,3 +1,87 @@
-*{
-    background-color: red;
+/* Login */
+.loginForm {
+    width: 80%;
+    max-width: 40rem;
+    padding: 2rem;
+    position: absolute;
+    top:52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.loginForm h1 {
+    font-size: 55px;
+    font-weight: bolder;
+    margin: auto;
+    display: block;
+    margin-bottom: 2.5rem;
+}
+
+.loginForm>input {
+    width: 80%;
+    border: 1.5px solid #cacaca;
+    border-radius: 8px;
+    padding: 1rem 12px;
+    margin-bottom: 1rem;
+    font-size: 17px;
+}
+
+.pwdShow button {
+    position: absolute;
+    top: 47%;
+    left: 81%;
+    border: none;
+    background: none;
+    font-size: 22px;
+    color: #727272;
+}
+
+.loginForm>input:focus {
+    outline: none;
+    border: 1.5px solid black;
+}
+
+.loginBtn {
+    width: 84%;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: black;
+    padding: 0.8rem 12px;
+    margin: 3rem 0 2rem 0;
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    transition: all 0.2s;
+    
+}
+
+.pwdShow button:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.loginBtn:hover {
+    cursor: pointer;
+    color: #efefef8b;
+}
+
+/* signUp & find email */
+.signUp {
+    width: 80%;
+    margin-bottom: 0.67rem;
+}
+
+.signUp>span {
+    color: #727272;
+    font-size: 20px;
+    margin-right: 23px;
+    
+}
+
+.signUp .pullRight>a {
+    color: black;
+    text-decoration: underline;
+    margin-right: -75px;
+    float: right;
 }
