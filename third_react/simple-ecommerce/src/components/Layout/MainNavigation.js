@@ -1,16 +1,18 @@
 import React, { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogContext from "../../store/log-context";
 import logo from "../../assets/logo2.png";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
+  const navigate = useNavigate();
   const logCtx = useContext(LogContext);
   const isLoggedIn = logCtx.isLoggedIn;
 
   const logoutHandler = () => {
     alert("See you again👋");
     logCtx.logout();
+    navigate("/", { replace: true });
   };
   return (
     <Fragment>
