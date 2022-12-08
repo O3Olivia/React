@@ -39,6 +39,7 @@ const retrieveStoredToken = () => {
 export const LogContextProvider = (props) => {
   const tokenData = retrieveStoredToken();
   let initialToken;
+  // tokenData가 있을 경우에만, 최초의토큰으로 설정
   if (tokenData) {
     initialToken = tokenData.token;
   }
