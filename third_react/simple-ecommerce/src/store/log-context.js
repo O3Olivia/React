@@ -39,12 +39,13 @@ const retrieveStoredToken = () => {
 export const LogContextProvider = (props) => {
   const tokenData = retrieveStoredToken();
   let initialToken;
-  // tokenData가 있을 경우에만, 최초의토큰으로 설정
+  // tokenData가 있을 경우에만, 받아온 tokenData에서 token 값만 꺼내서 initialToken에다 저장시킨다. => initialToken에는 이 남은 token값만 들어있다.
   if (tokenData) {
     initialToken = tokenData.token;
   }
   const [token, setToken] = useState(initialToken);
-  const userIsLogged = !!token;
+  // 여기서 초기 token의 값은 initialToken으로 세팅
+  const userIsLogged = !!token; // token 값이 있으면 'true', token값이 없으면 'false'로 boolean 형태로 값 반환
 
   const logoutHandler = useCallback(() => {
     setToken(null);
