@@ -9,12 +9,11 @@ const AuthContext = React.createContext({
   logout: () => {},
 });
 
+// expirationTime: 토큰의 만료시간 계산
 const calculateRemainingTime = (expirationTime) => {
   const currentTime = new Date().getTime(); // current time
-  const adjExpirationTime = new Date(expirationTime).getTime(); // future
-  //
-
-  const remainingDuration = adjExpirationTime - currentTime;
+  const adjExpirationTime = new Date(expirationTime).getTime(); // 만료시간
+  const remainingDuration = adjExpirationTime - currentTime; // 남은시간
 
   return remainingDuration;
 };
@@ -23,7 +22,6 @@ const calculateRemainingTime = (expirationTime) => {
 const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token"); // localStorage에서 token을 받은 뒤
   const storedExpirationDate = localStorage.getItem("expirationTime"); // localStorage에 있는 expirationTime<만료시간>을 받아 저장한다.
-
   const remainingTime = calculateRemainingTime(storedExpirationDate); // storedExpirationDate를 caculatedRemainingTime으로 보내서 (expirationTime로 보내짐) 그 시간이 remainingTime이 됨
 
   if (remainingTime <= 60000) {
@@ -73,6 +71,7 @@ export const AuthContextProvider = (props) => {
     const remainingTime = calculateRemainingTime(expirationTime);
 
     logoutTimer = setTimeout(logoutHandler, remainingTime); // setTimeout=> remaingTime만큼의 시간이 되면 logoutHandler callback 함수를 실행시킨다. => 로그아웃 시킨다.
+    //setTimeout함수 : 첫번째 인자로 실행할 코드를 담고 있는 callback함수, 두번째 인자로 지연 시간을 받는다.
   };
 
   // 타이머도 없애한다. 만약, tokenData가 변하면
