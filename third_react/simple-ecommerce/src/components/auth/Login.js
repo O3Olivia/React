@@ -16,7 +16,6 @@ const Login = (props) => {
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
   const [showPwd, setShowPwd] = useState({
     type: "password",
     visible: false,
@@ -34,7 +33,6 @@ const Login = (props) => {
       return { type: "password", visible: false };
     });
   };
-
   const submitHandler = (e) => {
     e.preventDefault();
     const enteredEmail = emailInputRef.current.value;
