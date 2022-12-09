@@ -15,6 +15,7 @@ const Login = (props) => {
   const LogCtx = useContext(LogContext);
 
   const [isLogin, setIsLogin] = useState(true);
+  // isLogin: 회원가입이 되어있냐 즉 회원이니 아니니를 알 수 있는 것. 아마 login보단 isSignup으로 바꾸면 더 좋을 것 같음
   const [isLoading, setIsLoading] = useState(false);
   const [showPwd, setShowPwd] = useState({
     type: "password",
