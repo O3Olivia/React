@@ -43,14 +43,16 @@ const Login = (props) => {
     let url;
     if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA4bpMeHWiBx73UGNr9rw0xi0iysGp5feo";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA4bpMeHWiBx73UGNr9rw0xi0iysGp5feo"; // 회원가입이 되어있으면 로그인으로 가는 Url
     } else {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA4bpMeHWiBx73UGNr9rw0xi0iysGp5feo";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA4bpMeHWiBx73UGNr9rw0xi0iysGp5feo"; // 회원가입이 안되어있으면 회원가입으로 가는 url
     }
     fetch(url, {
+      // fetch(url, options)
       method: "POST",
       body: JSON.stringify({
+        //  stringify() 자바스크립트의 값을 JSON 문자열로 변환 { 여기 안에 있는 값들을 }
         email: enteredEmail,
         password: enteredPwd,
         returnSecureToken: true,
@@ -58,11 +60,12 @@ const Login = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
+    }) // url을 패치하고나면 promise 1 반환.
       .then((res) => {
+        // 반환된 promise1로 .then()
         setIsLoading(false);
         if (res.ok) {
-          return res.json();
+          return res.json(); // promise 2 반환
         } else {
           return res.json().then((data) => {
             let errorMsg = "";
@@ -70,16 +73,17 @@ const Login = (props) => {
               errorMsg = data.error.message;
             }
             throw new Error(errorMsg);
-          });
+          }); // !res.ok않으면, errorMsg반환
         }
       })
       .then((data) => {
         const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
+          new Date().getTime() + +data.expiresIn * 60000 // data.expiresIn이 string 형태라서 +를 붙여 number로 전환
         );
         LogCtx.login(data.idToken, expirationTime.toISOString());
+        // toISOString()는 Date를 yyyy-mm-ddThh:mm:ss 형식의 문자열로 변환, but 날짜가 하루 전 날짜가 찍힌다. 그래서 위에 *60000 곱함
 
-        navigate("/", { replace: true });
+        navigate("/", { replace: true }); // 로그인 or 회원가입 끝나면 원래 main 페이지로 이동
       })
       .catch((err) => {
         alert(err.message);
