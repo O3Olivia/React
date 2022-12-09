@@ -13,6 +13,6 @@ Simple e-commerce site
 >
 
 # 📝 Handwriting code
-<img src="https://user-images.githubusercontent.com/87024040/206638488-d021914d-b34b-40d5-bb4d-e42524ed4315.jpg" width="600" height="800">
-<img src="https://user-images.githubusercontent.com/87024040/206638975-ed454f0a-9b78-4989-8957-76fa90602604.jpg" width="600" height="800">
+<span><img src="https://user-images.githubusercontent.com/87024040/206638488-d021914d-b34b-40d5-bb4d-e42524ed4315.jpg" width="500" height="800"></span>
+<span><img src="https://user-images.githubusercontent.com/87024040/206638975-ed454f0a-9b78-4989-8957-76fa90602604.jpg" width="500" height="800"></span>
 
