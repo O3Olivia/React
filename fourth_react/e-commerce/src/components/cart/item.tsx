@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { useMutation } from "react-query";
+import { Query, useMutation } from "react-query";
 import { CartType, UPDATE_CART } from "../../graphql/cart";
 import { getClient, graphqlFetcher, QueryKeys } from "../../queryClient";
 
@@ -11,16 +11,25 @@ const CartItem = ({
     amount
 }: CartType) => { 
     const queryClient = getClient();
-    const { mutate: updateCart } = useMutation(({ id, amount }: { id: string, amount: number }) => graphqlFetcher(UPDATE_CART, { id, amount }))
+    const { mutate: updateCart } = useMutation(({ id, amount }: { id: string, amount: number }) => graphqlFetcher(UPDATE_CART, { id, amount }),
+    {
+      onMutate: newValue => {
+        const prevCart = queryClient.getQueryData<{[key: string]:CartType}>(QueryKeys.CART);
+        const newCart = {
+           ...(prevCart || {}),
+           ...newValue,
+        }
+        queryClient.setQueryData(QueryKeys.CART, newCart)
+            },
+        },
+        )
+    
     
     const handleUpdateAmount = (e: SyntheticEvent) => {
         const amount = Number((e.target as HTMLInputElement).value);
-        updateCart({ id, amount }, {
-            onSuccess: () => queryClient.invalidateQueries(QueryKeys.CART)
-        },
-        )
+        updateCart({ id, amount })
     };
-    
+     
     return (
     <li className="cart-item">
         <img src={imageUrl} />
