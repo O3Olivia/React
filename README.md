@@ -24,6 +24,9 @@
       <br>
       <h3>3. Thrid_react</h3>
       <h6><a href="https://www.udemy.com/course/best-react/"> Maximilian Schwarzmüller님의 React with Redux, Next.js, TypeSript</h6>
+      <br>
+      <h3>4. Fourth_react</h3>
+      <h6><a href="https://www.inflearn.com/course/%ED%92%80%EC%8A%A4%ED%83%9D-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%BD%94%EB%94%A9-%EC%87%BC%ED%95%91%EB%AA%B0/dashboard/">정재남님의 풀스택 리액트 라이브코딩 - 간단한 쇼핑몰 만들기</h6>
   </div>
 <div>
     <a href="url" > <h2>:notebook: Notion</h2> </a>
