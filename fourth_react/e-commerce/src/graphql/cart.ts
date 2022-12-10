@@ -45,3 +45,4 @@ export const GET_CART = gql`
         }
     }
 `
+// GrapghQL을 이용하면, 명세를 미리 만들어서 back-end한테 이렇게 동작하게 만들어달라고 이런식의 명세만 보내주면 된다. 그럼 back-end가 알아서 API 만들어줌. 

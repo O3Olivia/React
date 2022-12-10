@@ -27,6 +27,9 @@ const MainNavigation = () => {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            <li>
+              <Link to="/board">Board</Link>
+            </li>
             {isLoggedIn && (
               <li>
                 <Link to="/changePwd">change Password</Link>
@@ -41,6 +44,9 @@ const MainNavigation = () => {
                 <Link to="/login">Login</Link>
               </li>
             )}
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
           </ul>
         </nav>
       </header>
