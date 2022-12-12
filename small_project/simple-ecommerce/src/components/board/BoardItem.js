@@ -6,7 +6,7 @@ const BoardItem = (props) => {
           <p>props.text</p>
         </div>
         <figcaption>props.userEmail</figcaption>
-        <figcaption>{props.date}</figcaption>
+        <figcaption>props.date</figcaption>
       </figure>
     </li>
   );
