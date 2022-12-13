@@ -41,7 +41,11 @@ const QuoteDetail = () => {
 
   return (
     <Fragment>
-      <HighLightedQuote text={loadedQuote.text} author={loadedQuote.author} />
+      <HighLightedQuote
+        text={loadedQuote.text}
+        author={loadedQuote.author}
+        date={loadedQuote.date}
+      />
       <Route path={`${match.path}`} exact>
         {/* exactly /comment 없으면 Load Comments가 보이고, 이걸로 Path가 정확하지 않으면 LoadComments가 안뜬다*/}
         <div className="centered">

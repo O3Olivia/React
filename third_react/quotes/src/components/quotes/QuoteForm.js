@@ -1,5 +1,6 @@
 import { Fragment, useRef, useState } from "react";
 import { Prompt } from "react-router-dom";
+import moment from "moment";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -16,10 +17,16 @@ const QuoteForm = (props) => {
 
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
+    const nowTime = moment().format("YYYY년 MM월 DD일");
+    console.log(nowTime);
 
     // optional: Could validate here
 
-    props.onAddQuote({ author: enteredAuthor, text: enteredText });
+    props.onAddQuote({
+      author: enteredAuthor,
+      text: enteredText,
+      date: nowTime,
+    });
   }
 
   const formFocusHandler = () => {
