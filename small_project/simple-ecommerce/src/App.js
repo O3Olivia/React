@@ -5,6 +5,7 @@ import LoginPage from "./pages/loginPage";
 import ProductPage from "./pages/productPage";
 import BoardPage from "./pages/boardPage";
 import AdminPage from "./pages/adminPage";
+import CartPage from "./pages/cartPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/board" element={<BoardPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />

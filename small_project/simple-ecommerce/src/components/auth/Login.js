@@ -85,6 +85,13 @@ const Login = (props) => {
         LogCtx.login(data.idToken, expirationTime.toISOString());
         // toISOString()는 Date를 yyyy-mm-ddThh:mm:ss 형식의 문자열로 변환
         navigate("/", { replace: true }); // 로그인 or 회원가입 끝나면 원래 main 페이지로 이동
+        console.log(data);
+
+        localStorage.setItem("email", data.email);
+        if (data.email === "admin@admin.com") {
+          navigate("/admin", { replace: true });
+        }
+        console.log(localStorage);
       })
       .catch((err) => {
         alert(err.message);

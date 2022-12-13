@@ -8,6 +8,7 @@ const MainNavigation = () => {
   const navigate = useNavigate();
   const logCtx = useContext(LogContext);
   const isLoggedIn = logCtx.isLoggedIn;
+  const isAdmin = localStorage.email === "admin@admin.com";
 
   const logoutHandler = () => {
     alert("See you again👋");
@@ -30,11 +31,19 @@ const MainNavigation = () => {
             <li>
               <Link to="/board">Board</Link>
             </li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
             {isLoggedIn && (
               <li>
                 <Link to="/changePwd">change Password</Link>
               </li>
             )}
+            {isAdmin ? (
+              <li>
+                <Link to="/admin">Admin</Link>
+              </li>
+            ) : null}
             {isLoggedIn ? (
               <li>
                 <button onClick={logoutHandler}>Logout</button>
@@ -44,9 +53,6 @@ const MainNavigation = () => {
                 <Link to="/login">Login</Link>
               </li>
             )}
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
           </ul>
         </nav>
       </header>

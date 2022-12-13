@@ -10,7 +10,10 @@ a{
 a:hover{
     color: #00000083;
 }
-li, button{
+li{
+    font-size: 15px;
+}
+button{
     font-size: 15px;
 }
 video {
@@ -81,7 +84,6 @@ header .menu ul {
     margin: 1rem;
 }
 header .menu li {
-    margin-left: 0.8rem;
     animation: moveDown .2s forwards;
     padding: 5px 20px;
     font-weight: 500;
@@ -98,14 +100,18 @@ header .menu li:nth-child(3) {
 header .menu li:nth-child(4) {
     animation-delay: .4s;
 }
-header .menu li:last-child {
+header .menu li:nth-child(5) {
     animation-delay: .5s;
+}
+header .menu li:last-child {
+    animation-delay: .6s;
     padding-top: 3.5px;
     
 }
 header .menu li > button {
     background-color: inherit;
     border-color: transparent;
+    margin-top: -2px;
 }
 header .menu li>button:hover{
     cursor: pointer;

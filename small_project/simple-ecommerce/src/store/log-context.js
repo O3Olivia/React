@@ -45,14 +45,15 @@ export const LogContextProvider = (props) => {
   }
   const [token, setToken] = useState(initialToken);
   // 여기서 초기 token의 값은 initialToken으로 세팅
-  const userIsLogged = !!token; // token 값이 있으면 'true', token값이 없으면 'false'로 boolean 형태로 값 반환
 
+  const userIsLogged = !!token; // token 값이 있으면 'true', token값이 없으면 'false'로 boolean 형태로 값 반환
   // useCallback: 특정 함수를 재사용하고 싶을 때 사용.
   // useMemo: 특정 값을 재사용하고 싶을 때 사용.
   const logoutHandler = useCallback(() => {
     setToken(null); // logout하니까 token값 없애고
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
+    localStorage.removeItem("email");
     //로컬저장소에서 token과 expirationTime 삭제  => retrieveStoredToken에서의 함수 재사용. if(remainingTime <= 30000){}
     if (logoutTimer) {
       clearTimeout(logoutTimer);
@@ -81,6 +82,7 @@ export const LogContextProvider = (props) => {
     logout: logoutHandler,
   };
 
+  console.log(localStorage);
   return (
     <LogContext.Provider value={contextValue}>
       {props.children}
