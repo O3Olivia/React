@@ -1,7 +1,8 @@
+import { useState, useContext } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import BoardItem from "./BoardItem";
 import classes from "./BoardList.module.css";
-
+import LogContext from "../../store/log-context";
 // const sortBoards = (boards, ascending) => {
 //   return boards.sort((boardA, boardB) => {
 //     if (ascending) {
@@ -13,8 +14,10 @@ import classes from "./BoardList.module.css";
 // };
 
 const BoardList = (props) => {
+  const logCtx = useContext(LogContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const isLoggedIn = logCtx.isLoggedIn;
 
   // const queryParams = new URLSearchParams(location.search);
   // const isSortingAscending = queryParams.get("sort") === "asc";
@@ -33,12 +36,18 @@ const BoardList = (props) => {
         {/* <button onClick={changeSortingHandler}>
           Sort {isSortingAscending ? "Descending" : "Ascending"}
         </button> */}
-        <Link
-          to="/create-board
+        {isLoggedIn ? (
+          <Link
+            to="/create-board
         "
-        >
-          <button>글쓰기</button>
-        </Link>
+          >
+            <button>글쓰기</button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button>로그인</button>
+          </Link>
+        )}
       </div>
       <ul>
         {/* {sortedBoards.map((board) => (

@@ -16,6 +16,7 @@
     margin: auto;
     display: block;
     margin-bottom: 2.5rem;
+    text-align: center;
 }
 
 .loginForm>input {

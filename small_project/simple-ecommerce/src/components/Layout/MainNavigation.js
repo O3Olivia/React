@@ -11,7 +11,7 @@ const MainNavigation = () => {
   const isAdmin = localStorage.email === "admin@admin.com";
 
   const logoutHandler = () => {
-    alert("See you again👋");
+    alert("우리 또 다시 만나요 👋");
     logCtx.logout();
     navigate("/", { replace: true });
   };
