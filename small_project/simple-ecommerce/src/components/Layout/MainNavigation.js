@@ -29,7 +29,7 @@ const MainNavigation = () => {
               <Link to="/products">Products</Link>
             </li>
             <li>
-              <Link to="/board">Board</Link>
+              <Link to="/boards">Board</Link>
             </li>
             <li>
               <Link to="/cart">Cart</Link>

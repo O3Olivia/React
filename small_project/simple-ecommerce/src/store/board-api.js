@@ -2,7 +2,7 @@ const FIREBASE_DOMAIN =
   "https://simple-e-commerce-f6319-default-rtdb.asia-southeast1.firebasedatabase.app";
 
 export async function getAllBoards() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/boards.json`);
+  const response = await fetch(`${FIREBASE_DOMAIN}/board.json`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -22,7 +22,7 @@ export async function getAllBoards() {
 }
 
 export async function getBoardItem(boardId) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/boards/${boardId}.json`);
+  const response = await fetch(`${FIREBASE_DOMAIN}/board/${boardId}.json`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -37,7 +37,7 @@ export async function getBoardItem(boardId) {
 }
 
 export async function addBoard(boardData) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/boards.json`, {
+  const response = await fetch(`${FIREBASE_DOMAIN}/board.json`, {
     method: "POST",
     body: JSON.stringify(boardData),
     headers: {

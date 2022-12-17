@@ -8,8 +8,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    
 }
-
 .loginForm h1 {
     font-size: 55px;
     font-weight: bolder;
@@ -25,6 +25,10 @@
     padding: 1rem 12px;
     margin-bottom: 1rem;
     font-size: 17px;
+    transition: .8s border-color;
+}
+.loginForm>input:hover {
+    border: 1px solid #171717;
 }
 .passwordInput{
     position: relative;
@@ -36,6 +40,10 @@
     padding: 1rem 12px;
     margin-bottom: 1rem;
     font-size: 17px;
+    transition: .8s border-color;
+}
+.passwordInput>input:hover {
+    border: 1px solid #171717;
 }
 .passwordInput>input:focus{
     outline: none;
