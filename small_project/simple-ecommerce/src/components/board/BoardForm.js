@@ -14,14 +14,14 @@ const BoardForm = (props) => {
 
     const enteredTitle = titleInputRef.current.value;
     const enteredText = textInputRef.current.value;
-    console.log(nowTime);
+    const enteredAuthor = localStorage.email;
 
     props.onAddBoard({
       title: enteredTitle,
       text: enteredText,
       date: nowTime,
+      author: enteredAuthor,
     });
-    console.log(enteredText, enteredTitle);
   }
   const navigate = useNavigate();
 
