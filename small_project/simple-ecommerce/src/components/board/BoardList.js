@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import BoardItem from "./BoardItem";
 import classes from "./BoardList.module.css";
@@ -17,7 +17,10 @@ const BoardList = (props) => {
   const logCtx = useContext(LogContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const isLoggedIn = logCtx.isLoggedIn;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    if (logCtx.isLoggedIn === true) setIsLoggedIn(true);
+  }, [logCtx.isLoggedIn]);
 
   // const queryParams = new URLSearchParams(location.search);
   // const isSortingAscending = queryParams.get("sort") === "asc";
