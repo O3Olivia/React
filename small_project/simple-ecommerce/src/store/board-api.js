@@ -2,7 +2,7 @@ const FIREBASE_DOMAIN =
   "https://simple-e-commerce-f6319-default-rtdb.asia-southeast1.firebasedatabase.app";
 
 export async function getAllBoards() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/board.json`);
+  const response = await fetch(`${FIREBASE_DOMAIN}/boards.json`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -10,7 +10,7 @@ export async function getAllBoards() {
   }
 
   const transformedBoards = [];
-
+  console.log(data);
   for (const key in data) {
     const boardObj = {
       id: key,
@@ -22,13 +22,12 @@ export async function getAllBoards() {
 }
 
 export async function getBoardItem(boardId) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/board/${boardId}.json`);
+  const response = await fetch(`${FIREBASE_DOMAIN}/boards/${boardId}.json`);
   const data = await response.json();
 
   if (!response.ok) {
     throw new Error(data.message || "게시물을 패치할수 없습니다.");
   }
-
   const loadedBoard = {
     id: boardId,
     ...data,
@@ -37,7 +36,7 @@ export async function getBoardItem(boardId) {
 }
 
 export async function addBoard(boardData) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/board.json`, {
+  const response = await fetch(`${FIREBASE_DOMAIN}/boards.json`, {
     method: "POST",
     body: JSON.stringify(boardData),
     headers: {

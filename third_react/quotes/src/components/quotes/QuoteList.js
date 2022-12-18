@@ -5,6 +5,7 @@ import QuoteItem from "./QuoteItem";
 import classes from "./QuoteList.module.css";
 
 const sortQuotes = (quotes, ascending) => {
+  console.log(quotes.sort);
   return quotes.sort((quoteA, quoteB) => {
     if (ascending) {
       return quoteA.id > quoteB.id ? 1 : -1;

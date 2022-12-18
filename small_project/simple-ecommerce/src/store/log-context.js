@@ -82,7 +82,6 @@ export const LogContextProvider = (props) => {
     logout: logoutHandler,
   };
 
-  console.log(localStorage);
   return (
     <LogContext.Provider value={contextValue}>
       {props.children}

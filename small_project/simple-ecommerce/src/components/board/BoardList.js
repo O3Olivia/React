@@ -1,44 +1,32 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import BoardItem from "./BoardItem";
-import classes from "./BoardList.module.css";
 import LogContext from "../../store/log-context";
-// const sortBoards = (boards, ascending) => {
-//   return boards.sort((boardA, boardB) => {
-//     if (ascending) {
-//       return boardA.id > boardB.id ? 1 : -1;
-//     } else {
-//       return boardA.id < boardB.id ? 1 : -1;
-//     }
-//   });
-// };
+import classes from "./BoardList.module.css";
 
 const BoardList = (props) => {
   const logCtx = useContext(LogContext);
-  const navigate = useNavigate();
-  const location = useLocation();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     if (logCtx.isLoggedIn === true) setIsLoggedIn(true);
   }, [logCtx.isLoggedIn]);
-
-  // const queryParams = new URLSearchParams(location.search);
-  // const isSortingAscending = queryParams.get("sort") === "asc";
-  // const sortedBoards = sortBoards(props.boards, isSortingAscending);
-
-  // const changeSortingHandler = () => {
-  //   navigate.push({
-  //     pathname: location.pathname,
-  //     search: `?sort=${isSortingAscending ? "desc" : "asc"}`,
-  //   });
-  // };
-
+  console.log(props);
+  const boardList = props.boards.map((board) => (
+    <BoardItem
+      id={board.id}
+      key={board.id}
+      title={board.title}
+      text={board.text}
+      date={board.date}
+      author={board.author}
+    />
+  ));
+  console.log(props.boards);
   return (
     <div className={classes.board_form}>
       <div>
-        {/* <button onClick={changeSortingHandler}>
-          Sort {isSortingAscending ? "Descending" : "Ascending"}
-        </button> */}
         {isLoggedIn ? (
           <Link
             to="/create-board
@@ -52,18 +40,7 @@ const BoardList = (props) => {
           </Link>
         )}
       </div>
-      <ul>
-        {/* {sortedBoards.map((board) => (
-          <BoardItem
-            key={board.id}
-            id={board.id}
-            uName={board.userEmail}
-            content={board.content}
-            date={board.date}
-          />
-        ))} */}
-        <BoardItem />
-      </ul>
+      <ul className={classes.list}>{boardList}</ul>
     </div>
   );
 };

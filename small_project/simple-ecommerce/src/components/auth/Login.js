@@ -81,17 +81,14 @@ const Login = (props) => {
           new Date().getTime() + +data.expiresIn * 1000 // data.expiresIn이 string 형태라서 +를 붙여 number로 전환
           // 1000을 곱하는 이유는 1시간동안 token을 유지되게 해야하기 때문에 expirationTime을 현재 로그인한 시간에서 +1hr하려고.
         );
-        console.log(expirationTime);
         LogCtx.login(data.idToken, expirationTime.toISOString());
         // toISOString()는 Date를 yyyy-mm-ddThh:mm:ss 형식의 문자열로 변환
         navigate("/", { replace: true }); // 로그인 or 회원가입 끝나면 원래 main 페이지로 이동
-        console.log(data);
 
         localStorage.setItem("email", data.email);
         if (data.email === "admin@admin.com") {
           navigate("/admin", { replace: true });
         }
-        console.log(localStorage);
       })
       .catch((err) => {
         alert(err.message);

@@ -1,12 +1,14 @@
+import classes from "./BoardItem.module.css";
+
 const BoardItem = (props) => {
   return (
-    <li>
+    <li className={classes.item}>
       <figure>
         <div>
-          <p>props.text</p>
+          <p>{props.text}</p>
         </div>
-        <figcaption>props.userEmail</figcaption>
-        <figcaption>props.date</figcaption>
+        <p>{props.author}</p>
+        <p>{props.date}데이터 </p>
       </figure>
     </li>
   );
