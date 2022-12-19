@@ -1,8 +1,69 @@
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+h1, h2, h3, h4, p, button {
+    font-family: 'GmarketSans';
+}
 .board_form {
+    width: 80%;
+    padding: 10px;
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid red;
+}
+.header{
+    margin-top: 20px;
+    text-align: left;
+}
+.header h1 {
+    font-size: 2.3rem;
+    margin-bottom:5px;
+}
+.header p{
+    margin: 0;
+    font-weight: 300;
+}
+.body{
+    margin-top: 10px;
+    border: 1px solid blue;
+}
+.body .sorting{
+    float: left;
+}
+.body .sorting button {
+    background-color: inherit;
+    border: none;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+.body .sorting button:hover{
+    color: #393939d1;
+}
+.body .sorting button > span >svg
+{   
+    vertical-align: middle;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+.body .writing{
+    float: right;
+}
+.body .writing button{
+    background-color: black;
+    border: none;
+    color:white;
+    font-size: 1.2rem;
+    border: 1px solid black;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.body .writing button:hover {
+    background-color: #000000d1;
+    cursor: pointer;
+}
+.lists{
+    border: 1px solid goldenrod;
+    margin-top: 50px;
 }

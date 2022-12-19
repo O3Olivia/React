@@ -1,0 +1,13 @@
+.item{
+    border: 1px solid greenyellow;
+    padding: 10px;
+    text-align: left;
+}
+.contents > p{
+    width: 85%;
+    height: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid green;
+}

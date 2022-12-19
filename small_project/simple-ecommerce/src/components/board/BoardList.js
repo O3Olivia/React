@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import BoardItem from "./BoardItem";
 import LogContext from "../../store/log-context";
 import classes from "./BoardList.module.css";
+import { HiOutlineChevronDown, HiChevronUp } from "react-icons/hi2";
 
 const sortBoards = (boards, ascending) => {
   console.log(boards.sort);
@@ -55,26 +56,44 @@ const BoardList = (props) => {
   console.log(props.boards);
   return (
     <div className={classes.board_form}>
-      <div className={classes.sorting}>
-        <button onClick={changeSortingHandler}>
-          {isSortingAscending ? "최신순" : "오래된순"}
-        </button>
+      <div className={classes.header}>
+        <h1>커뮤니티</h1>
+        <p>패션을 넘어서 다양한 이야기를 이웃과 함께 나누어요.</p>
       </div>
-      <div>
-        {isLoggedIn ? (
-          <Link
-            to="/create-board
+      <div className={classes.body}>
+        <div className={classes.sorting}>
+          <button onClick={changeSortingHandler}>
+            {isSortingAscending ? (
+              <span>
+                최신순
+                <HiOutlineChevronDown />
+              </span>
+            ) : (
+              <span>
+                오래된순
+                <HiChevronUp />
+              </span>
+            )}
+          </button>
+        </div>
+        <div className={classes.writing}>
+          {isLoggedIn ? (
+            <Link
+              to="/create-board
         "
-          >
-            <button>글쓰기</button>
-          </Link>
-        ) : (
-          <Link to="/login">
-            <button>로그인</button>
-          </Link>
-        )}
+            >
+              <button>글쓰기</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button>로그인</button>
+            </Link>
+          )}
+        </div>
+        <div className={classes.lists}>
+          <ul className={classes.list}>{boardList}</ul>
+        </div>
       </div>
-      <ul className={classes.list}>{boardList}</ul>
     </div>
   );
 };
