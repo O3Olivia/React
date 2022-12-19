@@ -7,8 +7,10 @@ const BoardItem = (props) => {
         <h2>{props.title}</h2>
         <p>{props.text}</p>
       </div>
-      <p>{props.author}</p>
-      <p>{props.date}</p>
+      <div className={classes.author}>
+        <p>{props.author}</p>
+        <p>{props.date}</p>
+      </div>
     </li>
   );
 };

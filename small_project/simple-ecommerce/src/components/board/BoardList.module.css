@@ -11,7 +11,6 @@ h1, h2, h3, h4, p, button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid red;
 }
 .header{
     margin-top: 20px;
@@ -23,11 +22,11 @@ h1, h2, h3, h4, p, button {
 }
 .header p{
     margin: 0;
+    padding-bottom: 40px;
     font-weight: 300;
 }
 .body{
     margin-top: 10px;
-    border: 1px solid blue;
 }
 .body .sorting{
     float: left;
@@ -35,8 +34,9 @@ h1, h2, h3, h4, p, button {
 .body .sorting button {
     background-color: inherit;
     border: none;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     cursor: pointer;
+    padding-top: 18px;
 }
 .body .sorting button:hover{
     color: #393939d1;
@@ -64,6 +64,8 @@ h1, h2, h3, h4, p, button {
     cursor: pointer;
 }
 .lists{
-    border: 1px solid goldenrod;
-    margin-top: 50px;
+    margin-top: 60px;
+    border: 0.4px solid #C4C4C4;
+    border-radius: 10px;
+    padding-top: 20px;
 }

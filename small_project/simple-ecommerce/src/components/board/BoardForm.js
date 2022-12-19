@@ -14,7 +14,7 @@ const BoardForm = (props) => {
 
     const enteredTitle = titleInputRef.current.value;
     const enteredText = textInputRef.current.value;
-    const enteredAuthor = localStorage.email;
+    const enteredAuthor = localStorage.email.split("@", 1);
 
     props.onAddBoard({
       title: enteredTitle,

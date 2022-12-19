@@ -86,13 +86,13 @@ const BoardList = (props) => {
             </Link>
           ) : (
             <Link to="/login">
-              <button>로그인</button>
+              <button>글쓰기</button>
             </Link>
           )}
         </div>
-        <div className={classes.lists}>
-          <ul className={classes.list}>{boardList}</ul>
-        </div>
+      </div>
+      <div className={classes.lists}>
+        <ul className={classes.list}>{boardList}</ul>
       </div>
     </div>
   );

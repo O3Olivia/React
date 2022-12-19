@@ -11,6 +11,7 @@ const Login = (props) => {
 
   const emailInputRef = useRef();
   const pwdInputRef = useRef();
+  const nameInputRef = useRef();
 
   const LogCtx = useContext(LogContext);
 
@@ -92,7 +93,6 @@ const Login = (props) => {
       })
       .catch((err) => {
         alert(err.message);
-        console.log(err);
       });
   };
   return (
@@ -105,7 +105,13 @@ const Login = (props) => {
           {isLogin ? (
             ""
           ) : (
-            <input id="name" type="text" placeholder="name" required />
+            <input
+              id="name"
+              type="text"
+              placeholder="name"
+              ref={nameInputRef}
+              required
+            />
           )}
           <input
             id="email"
