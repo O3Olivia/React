@@ -5,10 +5,11 @@ const BoardItem = (props) => {
     <li className={classes.item}>
       <figure>
         <div>
+          <p>{props.title}</p>
           <p>{props.text}</p>
         </div>
         <p>{props.author}</p>
-        <p>{props.date}데이터 </p>
+        <p>{props.date}</p>
       </figure>
     </li>
   );
